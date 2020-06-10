@@ -10,30 +10,30 @@ static void display() {
     float theta, x, y, pi = 3.141592653589793;
 	int i = -1;
 
-    glClearColor(0.9, 0.5, 0.05, 0); // portokali gia to xoro ekso apo to gipedo
+    glClearColor(0.9, 0.5, 0.05, 0); // orange for the space outside of the field
 	glClear(GL_COLOR_BUFFER_BIT);
 
-    glColor3f(0, 0.75, 0); // prasino gia to gipedo
-	glRectf(-69, -54, 69, 54); // to prasino orthogonio mesa sto opoio tha sxediastei to gipedo
+    glColor3f(0, 0.75, 0); // green for the field
+	glRectf(-69, -54, 69, 54); // the green rectangular in which the field will be designed
 
-    glColor3f(1, 1, 1); // aspro gia tis grammes kai tin mpala
+    glColor3f(1, 1, 1); // white color for the filed lines and the ball
 
     do {
-        glBegin(GL_LINE_LOOP); // i aristerri perioxi tin proti fora pou trexei o vrogxos
+        glBegin(GL_LINE_LOOP); // the left side of the filed will be created the first time this loop will be executed
         glVertex2f(i * 60, -45);
         glVertex2f(0, -45);
         glVertex2f(0, 45);
         glVertex2f(i * 60, 45);
         glEnd();
 
-        glBegin(GL_LINE_LOOP); // i aristeri megali perioxi tin proti fora pou trexei o vrogxos
+        glBegin(GL_LINE_LOOP); // the penalty area will be created the first time this loop will be executed
         glVertex2f(i * 60, -20.15);
         glVertex2f(i * 43.5, -20.15);
         glVertex2f(i * 43.5, 20.15);
         glVertex2f(i * 60, 20.15);
         glEnd();
 
-        glBegin(GL_LINE_LOOP); // i aristeri mikri perioxi tin proti fora pou trexei o vrogxos
+        glBegin(GL_LINE_LOOP); // the goal area will be created the first time this loop will be executed
         glVertex2f(i * 60, -9.15);
         glVertex2f(i * 54.5, -9.15);
         glVertex2f(i * 54.5, 9.15);
@@ -41,7 +41,7 @@ static void display() {
         glEnd();
 
         theta = -22 * pi/75;
-        glBegin(GL_LINE_LOOP); // to deksi imikiklio ekso apo tin megali perioxi tin proti fora pou trexei o vrogxos
+        glBegin(GL_LINE_LOOP); // the left penalty arc will be created the first time this loop will be executed
         while(theta <= 22 * pi/75){
             x = 9.15 * cos(theta);
             y = 9.15 * sin(theta);
@@ -55,7 +55,7 @@ static void display() {
     while(i > 0);
 
     theta = 0;
-    glBegin(GL_LINE_LOOP); // i sentra
+    glBegin(GL_LINE_LOOP); // center
     while(theta <= 2*pi){
         x = 9.15 * cos(theta);
         y = 9.15 * sin(theta);
@@ -65,7 +65,7 @@ static void display() {
     glEnd();
 
     theta = 0;
-    glBegin(GL_POLYGON); // i mpala
+    glBegin(GL_POLYGON); // ball
     while(theta <= 2*pi){
         xb1 = cos(theta);
         yb1 = sin(theta);

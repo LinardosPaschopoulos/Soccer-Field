@@ -169,11 +169,11 @@ void specialKeys(int key, int a, int b) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitWindowSize(744, 744);
-	glutInitWindowPosition(30, 30);
+	glutInitWindowPosition(600, 200);
 	glutCreateWindow(argv[0]);
 
 	init();
-    glutSpecialFunc(specialKeys);
+	glutSpecialFunc(specialKeys);
 	glutDisplayFunc(display);
 
 	glutMainLoop();

@@ -1,10 +1,6 @@
 #include "gl/glut.h"
-#include <iostream>
 #include <fstream>
 #include <math.h>
-#include <stdlib.h>
-
-using namespace std;
 
 int score1 = 0, score2 = 0, score_check;
 GLfloat xb1 = 1, yb1 = 1;
@@ -14,7 +10,7 @@ void renderbitmap(float x, float y, void *font, char *string) {
     char *c;
     glRasterPos2f(x, y);
     for (c = string; *c != '\0'; c++) {
-    glutBitmapCharacter(font, *c);
+        glutBitmapCharacter(font, *c);
     }
 }
 

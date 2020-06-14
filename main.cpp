@@ -1,18 +1,37 @@
+#include "gl/glut.h"
 #include <iostream>
-#include <GL/glut.h>
+#include <fstream>
 #include <math.h>
+#include <stdlib.h>
 
 using namespace std;
 
-float score1 = 0, score2 = 0;
+int score1 = 0, score2 = 0, score_check;
 GLfloat xb1 = 1, yb1 = 1;
 GLfloat xb2 = 0, yb2 = 0;
 
-static void display() {
+void renderbitmap(float x, float y, void *font, char *string) {
+    char *c;
+    glRasterPos2f(x, y);
+    for (c = string; *c != '\0'; c++) {
+    glutBitmapCharacter(font, *c);
+    }
+}
+
+void introscreen() {
+    glColor3f(1, 1, 1);
+    char buf[10];
+    sprintf(buf, "%d  -  %d", score1, score2);
+    renderbitmap(-7, 60, GLUT_BITMAP_TIMES_ROMAN_24, buf);
+}
+
+void init() {
+    glOrtho(-80, 80, -80, 80, -80, 80);
+}
+
+void display() {
     float theta, x, y, pi = 3.141592653589793;
 	int i = -1;
-
-	void text();
 
     glClearColor(0.9, 0.5, 0.05, 0); // orange for the space outside of the field
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -89,10 +108,13 @@ static void display() {
         theta += 2*pi/64;
     }
     glEnd();
+    introscreen();
     glFlush();
 }
 
 void specialKeys(int key, int a, int b) {
+    score_check = xb2;
+
 	if (key == GLUT_KEY_RIGHT && xb2 <= 59) {
 		xb1++;
 		xb2++;
@@ -140,20 +162,24 @@ void specialKeys(int key, int a, int b) {
 		yb2--;
 	}
 
+    if (score_check == 60 && xb2 == 61)
+        score1++;
+    if (score_check == -60 && xb2 == -61)
+        score2++;
+
 	glutPostRedisplay();
 }
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitWindowPosition(0, 0);
 	glutInitWindowSize(744, 744);
-	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+	glutInitWindowPosition(30, 30);
 	glutCreateWindow(argv[0]);
 
-	glMatrixMode(GL_PROJECTION);
-	gluOrtho2D(-69, 69, -69, 69);
+	init();
+    glutSpecialFunc(specialKeys);
 	glutDisplayFunc(display);
-	glutSpecialFunc(specialKeys);
+
 	glutMainLoop();
 
 	return 0;

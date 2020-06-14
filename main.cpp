@@ -18,7 +18,7 @@ void introscreen() {
     glColor3f(1, 1, 1);
     char buf[10];
     sprintf(buf, "%d  -  %d", score1, score2);
-    renderbitmap(-7, 60, GLUT_BITMAP_TIMES_ROMAN_24, buf);
+    renderbitmap(-6, 60, GLUT_BITMAP_TIMES_ROMAN_24, buf);
 }
 
 void init() {
@@ -168,12 +168,12 @@ void specialKeys(int key, int a, int b) {
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitWindowSize(744, 744);
-	glutInitWindowPosition(600, 200);
+	glutInitWindowSize(900, 900);
+	glutInitWindowPosition(600, 150);
 	glutCreateWindow(argv[0]);
 
 	init();
-	glutSpecialFunc(specialKeys);
+    glutSpecialFunc(specialKeys);
 	glutDisplayFunc(display);
 
 	glutMainLoop();

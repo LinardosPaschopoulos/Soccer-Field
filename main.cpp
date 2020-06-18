@@ -1,6 +1,10 @@
 #include "gl/glut.h"
+#include <iostream>
 #include <fstream>
 #include <math.h>
+#include <stdlib.h>
+
+using namespace std;
 
 int score1 = 0, score2 = 0, score_check;
 GLfloat xb1 = 1, yb1 = 1;
@@ -10,7 +14,7 @@ void renderbitmap(float x, float y, void *font, char *string) {
     char *c;
     glRasterPos2f(x, y);
     for (c = string; *c != '\0'; c++) {
-        glutBitmapCharacter(font, *c);
+    glutBitmapCharacter(font, *c);
     }
 }
 
@@ -18,7 +22,7 @@ void introscreen() {
     glColor3f(1, 1, 1);
     char buf[10];
     sprintf(buf, "%d  -  %d", score1, score2);
-    renderbitmap(-6, 60, GLUT_BITMAP_TIMES_ROMAN_24, buf);
+    renderbitmap(-7, 60, GLUT_BITMAP_TIMES_ROMAN_24, buf);
 }
 
 void init() {
@@ -168,7 +172,7 @@ void specialKeys(int key, int a, int b) {
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitWindowSize(900, 900);
+	glutInitWindowSize(744, 744);
 	glutInitWindowPosition(600, 100);
 	glutCreateWindow(argv[0]);
 

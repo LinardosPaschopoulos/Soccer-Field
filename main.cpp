@@ -31,10 +31,10 @@ void init() {
 
 void display() {
     float theta, x, y, pi = 3.141592653589793;
-	int i = -1;
+    int i = -1;
 
     glClearColor(0.9, 0.5, 0.05, 0); // orange for the space outside of the field
-	glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
 
     if (xb2 < 61 && xb2 > -61) {
         glColor3f(0, 0.75, 0); // green for the field
@@ -115,72 +115,72 @@ void display() {
 void specialKeys(int key, int a, int b) {
     score_check = xb2;
 
-	if (key == GLUT_KEY_RIGHT && xb2 <= 59) {
-		xb1++;
-		xb2++;
-	}
+    if (key == GLUT_KEY_RIGHT && xb2 <= 59) {
+        xb1++;
+	xb2++;
+    }
     else if (key == GLUT_KEY_RIGHT && xb2 <= 61.44 && yb2 <= 3.65 && yb2 >= -3.65) {
         xb1++;
-		xb2++;
+        xb2++;
     }
 
-
-	if (key == GLUT_KEY_LEFT && xb2 >= -59) {
-		xb1--;
-		xb2--;
-	}
+    if (key == GLUT_KEY_LEFT && xb2 >= -59) {
+        xb1--;
+	xb2--;
+    }
     else if (key == GLUT_KEY_LEFT && xb2 >= -61.44 && yb2 <= 3.65 && yb2 >= -3.65) {
         xb1--;
-		xb2--;
+	xb2--;
     }
 
-
     if (key == GLUT_KEY_UP && yb2 <= 44 && xb2 <= 60.44 && xb2 >= -60.44) {
-		yb1++;
-		yb2++;
-	}
+	yb1++;
+	yb2++;
+    }
     else if (key == GLUT_KEY_UP && yb2 <= 2.65 && xb2 <= -59) {
-		yb1++;
-		yb2++;
-	}
+	yb1++;
+	yb2++;
+    }
     else if (key == GLUT_KEY_UP && yb2 <= 2.65 && xb2 >= 59) {
-		yb1++;
-		yb2++;
-	}
+        yb1++;
+        yb2++;
+    }
 
-
-	if (key == GLUT_KEY_DOWN && yb2 >= -44 && xb2 <= 60.44 && xb2 >= -60.44) {
-		yb1--;
-		yb2--;
-	}
-	else if (key == GLUT_KEY_DOWN && yb2 >= -2.65 && xb2 <= -59) {
-		yb1--;
-		yb2--;
-	}
+    if (key == GLUT_KEY_DOWN && yb2 >= -44 && xb2 <= 60.44 && xb2 >= -60.44) {
+        yb1--;
+        yb2--;
+    }
+    else if (key == GLUT_KEY_DOWN && yb2 >= -2.65 && xb2 <= -59) {
+	yb1--;
+	yb2--;
+    }
     else if (key == GLUT_KEY_DOWN && yb2 >= -2.65 && xb2 >= 59) {
-		yb1--;
-		yb2--;
-	}
+        yb1--;
+        yb2--;
+    }
 
-    if (score_check == 60 && xb2 == 61)
+    if (score_check == 60 && xb2 == 61) {
         score1++;
-    if (score_check == -60 && xb2 == -61)
+    }
+    
+    if (score_check == -60 && xb2 == -61) {
         score2++;
-
-	glutPostRedisplay();
+    }
+    
+    glutPostRedisplay();
 }
 
 int main(int argc, char** argv) {
-	glutInit(&argc, argv);
-	glutInitWindowSize(744, 744);
-	glutInitWindowPosition(600, 100);
-	glutCreateWindow(argv[0]);
+    glutInit(&argc, argv);
+    glutInitWindowSize(744, 744);
+    glutInitWindowPosition(600, 100);
+    glutCreateWindow(argv[0]);
 
-	init();
-    	glutSpecialFunc(specialKeys);
-	glutDisplayFunc(display);
+    init();
+    glutSpecialFunc(specialKeys);
+    glutDisplayFunc(display);
 
-	glutMainLoop();
+    glutMainLoop();
 
-	return 0;
+    return 0;
 }

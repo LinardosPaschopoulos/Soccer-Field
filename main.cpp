@@ -177,7 +177,7 @@ int main(int argc, char** argv) {
 	glutCreateWindow(argv[0]);
 
 	init();
-    glutSpecialFunc(specialKeys);
+    	glutSpecialFunc(specialKeys);
 	glutDisplayFunc(display);
 
 	glutMainLoop();
